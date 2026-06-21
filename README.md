@@ -1,6 +1,6 @@
 # 🧠 LeetCode Solutions in C++
 
-A curated collection of **94+ LeetCode solutions** written in C++ with detailed comments explaining the intuition, approach, time/space complexity, and pattern used for every problem.
+A curated collection of **100 LeetCode solutions** written in C++ with detailed comments explaining the intuition, approach, time/space complexity, and pattern used for every problem.
 
 > Problems are organized by **pattern / data structure** so you can study by topic and recognize problem-solving patterns during interviews.
 
@@ -15,6 +15,7 @@ A curated collection of **94+ LeetCode solutions** written in C++ with detailed 
 - [#️⃣ Hashing](#-hashing)
 - [📐 Math & Simulation](#-math--simulation)
 - [📋 Arrays](#-arrays)
+- [🟦 Matrix](#-matrix)
 - [🔗 Linked List](#-linked-list)
 - [📚 Stack](#-stack)
 - [🌲 Trees (BFS / DFS)](#-trees-bfs--dfs)
@@ -30,16 +31,18 @@ A curated collection of **94+ LeetCode solutions** written in C++ with detailed 
 |---|---|
 | Two Pointers | 9 |
 | Sliding Window | 7 |
-| Binary Search | 8 |
-| Hashing | 8 |
-| Math & Simulation | 6 |
+| Binary Search | 9 |
+| Hashing | 11 |
+| Math & Simulation | 8 |
 | Arrays | 10 |
+| Matrix | 2 |
 | Linked List | 11 |
 | Stack | 8 |
 | Trees (BFS / DFS) | 14 |
 | Heap / Priority Queue | 6 |
 | Backtracking | 4 |
-| **Total** | **94** |
+| String Manipulation | 3 |
+| **Total** | **100** 🎉 |
 
 ---
 
@@ -105,7 +108,7 @@ Eliminates half the search space each iteration. Works on sorted arrays and on a
 
 Hash maps and hash sets give O(1) average lookups — ideal for counting frequencies, grouping, and complement searches.
 
-**When to use:** Duplicate detection, anagram grouping, frequency counting, prefix-sum pair finding.
+**When to use:** Duplicate detection, anagram grouping, frequency counting, uniqueness verification, prefix-sum pair finding.
 
 | # | Problem | Difficulty | Key Idea |
 |---|---|---|---|
@@ -113,21 +116,25 @@ Hash maps and hash sets give O(1) average lookups — ideal for counting frequen
 | 128 | [Longest Consecutive Sequence](./128_Longest_Consecutive_Sequence.cpp) | 🟡 Medium | HashSet; only expand from sequence start `(x-1 not in set)` |
 | 217 | [Contains Duplicate](./217_Contains_Duplicate.cpp) | 🟢 Easy | Insert into map; duplicate if already present |
 | 242 | [Valid Anagram](./242_Valid_Anagram.cpp) | 🟢 Easy | Frequency map of s, then subtract using t |
+| 387 | [First Unique Character in a String](./387_First_Unique_Character_in_a_String.cpp) | 🟢 Easy | freq[26] array; two-pass — count then find first with freq 1 |
 | 451 | [Sort Characters By Frequency](./451_Sort_Characters_By_Frequency.cpp) | 🟡 Medium | Frequency map + bucket sort by frequency |
 | 560 | [Subarray Sum Equals K](./560_Subarray_Sum_Equals_K.cpp) | 🟡 Medium | Prefix sum + HashMap; count `prefixSum - k` occurrences |
-| 1281 | [Subtract Product and Sum of Digits](./1281_Subtract_the_Product_and_Sum_of_Digits_of_an_Integer.cpp) | 🟢 Easy | Digit extraction with `% 10` and `/ 10` |
+| 1207 | [Unique Number of Occurrences](./1207_Unique_Number_of_Occurrences.cpp) | 🟢 Easy | Build freq map; check all frequencies unique via HashSet |
 | 2149 | [Rearrange Array Elements by Sign](./2149_Rearrange_Array_Elements_by_Sign.cpp) | 🟡 Medium | Separate even/odd index pointers for positives/negatives |
+| 3866 | [First Unique Even Element](./3866_First_Unique_Even_Element.cpp) | 🟢 Easy | Count only evens in map; scan original order for freq == 1 |
 
 ---
 
 ## 📐 Math & Simulation
 
-Problems solved through arithmetic reasoning, digit manipulation, or simulating a described process.
+Problems solved through arithmetic reasoning, digit manipulation, or simulating a described process step by step.
 
-**When to use:** Digit problems, power computation, staircase/combinatorics counting, carry propagation.
+**When to use:** Digit problems, power computation, overflow detection, string parsing, carry propagation, combinatorics.
 
 | # | Problem | Difficulty | Key Idea |
 |---|---|---|---|
+| 7 | [Reverse Integer](./7_Reverse_Integer.cpp) | 🟡 Medium | Check overflow BEFORE multiplying: `rev > INT_MAX/10` |
+| 8 | [String to Integer (atoi)](./8_String_to_Integer_atoi.cpp) | 🟡 Medium | Four phases: skip spaces → sign → digits → clamp |
 | 9 | [Palindrome Number](./9_Palindrome_Number.cpp) | 🟢 Easy | Convert to string; two-pointer palindrome check |
 | 50 | [Pow(x, n)](./50_Pow_x_n.cpp) | 🟡 Medium | Binary exponentiation — O(log n) via repeated squaring |
 | 66 | [Plus One](./66_Plus_One.cpp) | 🟢 Easy | Carry propagation right-to-left; prepend 1 if all 9s |
@@ -144,15 +151,28 @@ General array manipulation — sorting tricks, in-place reordering, prefix/suffi
 | # | Problem | Difficulty | Key Idea |
 |---|---|---|---|
 | 14 | [Longest Common Prefix](./14_Longest_Common_Prefix.cpp) | 🟢 Easy | Sort; compare only first and last string |
-| 53 | [Maximum Subarray](./53_Maximum_Subarray.cpp) | 🟡 Medium | Kadane's algorithm — reset running sum when negative |
+| 53 | [Maximum Subarray](./53_Maximum_Subarray.cpp) | 🟡 Medium | Kadane's — reset running sum when it goes negative |
 | 121 | [Best Time to Buy and Sell Stock](./121_Best_Time_to_Buy_and_Sell_Stock.cpp) | 🟢 Easy | Track min price so far; compute profit at each step |
 | 169 | [Majority Element](./169_Majority_Element.cpp) | 🟢 Easy | Boyer-Moore voting — cancel non-majority votes |
 | 179 | [Largest Number](./179_Largest_Number.cpp) | 🟡 Medium | Custom sort: `a+b > b+a` determines order |
 | 189 | [Rotate Array](./189_Rotate_Array.cpp) | 🟡 Medium | Three reversals: whole → first k → last n-k |
-| 238 | [Product of Array Except Self](./238_Product_of_Array_Except_Self.cpp) | 🟡 Medium | Prefix product pass + suffix variable in one reverse pass |
+| 238 | [Product of Array Except Self](./238_Product_of_Array_Except_Self.cpp) | 🟡 Medium | Prefix product pass + suffix variable in reverse pass |
 | 287 | [Find the Duplicate Number](./287_Find_the_Duplicate_Number.cpp) | 🟡 Medium | Floyd's cycle detection on index-value linked list |
 | 448 | [Find All Numbers Disappeared in Array](./448_Find_All_Numbers_Disappeared_in_an_Array.cpp) | 🟢 Easy | Mark visited indices negative; positive index = missing |
 | 922 | [Sort Array By Parity II](./922_Sort_Array_By_Parity_II.cpp) | 🟢 Easy | Two placement pointers for even and odd indices |
+
+---
+
+## 🟦 Matrix
+
+2D grid problems that exploit row/column structure or geometric transformations.
+
+**When to use:** In-place transformations, diagonal traversal, spiral order, row/column sorted search.
+
+| # | Problem | Difficulty | Key Idea |
+|---|---|---|---|
+| 48 | [Rotate Image](./48_Rotate_Image.cpp) | 🟡 Medium | Clockwise 90° = Transpose + Reverse each row |
+| 36 | [Valid Sudoku](./36_Valid_Sudoku.cpp) | 🟡 Medium | Three HashSets — one per row, column, and 3×3 box |
 
 ---
 
@@ -178,7 +198,9 @@ Pointer manipulation problems. Key techniques: dummy nodes, fast/slow pointers, 
 
 ## 📚 Stack
 
-LIFO order makes stacks perfect for problems involving matching pairs, "undo" operations, next greater/smaller elements, and expression evaluation.
+LIFO order makes stacks perfect for matching pairs, "undo" operations, next greater/smaller elements, and expression evaluation.
+
+**When to use:** Bracket matching, expression evaluation, monotonic next-greater problems, backspace simulation.
 
 | # | Problem | Difficulty | Key Idea |
 |---|---|---|---|
@@ -204,7 +226,7 @@ Tree problems divide into **DFS** (recursive depth-first, natural for height/pat
 | 98 | [Validate Binary Search Tree](./98_Validate_Binary_Search_Tree.cpp) | 🟡 Medium | Pass `(min, max)` range bounds down the recursion |
 | 100 | [Same Tree](./100_Same_Tree.cpp) | 🟢 Easy | Recurse both trees simultaneously; compare structure + values |
 | 104 | [Maximum Depth of Binary Tree](./104_Maximum_Depth_of_Binary_Tree.cpp) | 🟢 Easy | `max(leftDepth, rightDepth) + 1` bottom-up |
-| 105 | [Construct Tree from Preorder & Inorder](./105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal.cpp) | 🟡 Medium | Preorder gives root; inorder gives left/right split |
+| 105 | [Construct Tree from Preorder & Inorder](./105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal.cpp) | 🟡 Medium | Preorder gives root; inorder gives left/right boundary |
 | 230 | [Kth Smallest Element in a BST](./230_Kth_Smallest_Element_in_a_BST.cpp) | 🟡 Medium | Inorder traversal = sorted order; count to k |
 | 236 | [Lowest Common Ancestor](./236_Lowest_Common_Ancestor_of_Binary_Tree.cpp) | 🟡 Medium | Postorder; first node where both sides return non-null |
 | 543 | [Diameter of Binary Tree](./543_Diameter_of_Binary_Tree.cpp) | 🟢 Easy | At each node: `leftHeight + rightHeight`; track global max |
@@ -218,19 +240,21 @@ Tree problems divide into **DFS** (recursive depth-first, natural for height/pat
 | 102 | [Binary Tree Level Order Traversal](./102_Binary_Tree_Level_Order_Traversal.cpp) | 🟡 Medium | Queue + snapshot `levelSize` each iteration |
 | 199 | [Binary Tree Right Side View](./199_Binary_Tree_Right_Side_View.cpp) | 🟡 Medium | BFS; record last node of each level |
 
-### String Manipulation (Tree-Adjacent)
+### String Manipulation
 
 | # | Problem | Difficulty | Key Idea |
 |---|---|---|---|
-| 151 | [Reverse Words in a String](./151_Reverse_Words_in_a_String.cpp) | 🟡 Medium | Reverse whole string, then reverse each word |
-| 1910 | [Remove All Occurrences of a Substring](./1910_Remove_All_Occurrences_of_a_Substring.cpp) | 🟡 Medium | Repeatedly `find + erase` until no occurrence remains |
 | 58 | [Length of Last Word](./58_Length_of_Last_Word.cpp) | 🟢 Easy | Reverse scan: skip trailing spaces, count word characters |
+| 151 | [Reverse Words in a String](./151_Reverse_Words_in_a_String.cpp) | 🟡 Medium | Reverse whole string, then reverse each word individually |
+| 1910 | [Remove All Occurrences of a Substring](./1910_Remove_All_Occurrences_of_a_Substring.cpp) | 🟡 Medium | Repeatedly `find + erase` until no occurrence remains |
 
 ---
 
 ## ⛰️ Heap / Priority Queue
 
 A max-heap or min-heap gives O(log n) insert/extract and O(1) peek — ideal for top-K problems and greedy scheduling.
+
+**When to use:** Kth largest/smallest, dynamic median, greedy scheduling, sliding window maximum.
 
 | # | Problem | Difficulty | Key Idea |
 |---|---|---|---|
@@ -260,7 +284,7 @@ Explore all possibilities through recursive decision trees, undoing choices (bac
 
 ## 🚀 Coming Soon
 
-The repository is actively growing! Here are the upcoming sections:
+The repository is actively growing. Upcoming sections:
 
 ### 🌐 Graphs
 - BFS / DFS on graphs
@@ -269,7 +293,7 @@ The repository is actively growing! Here are the upcoming sections:
 - Shortest Path (Dijkstra, BFS)
 
 ### 💡 Dynamic Programming
-- 1D DP (Fibonacci variants, House Robber, Climbing Stairs)
+- 1D DP (Climbing Stairs, House Robber, Coin Change)
 - 2D DP (Grid paths, Edit Distance, LCS)
 - Knapsack variants
 - Subsequence problems
@@ -309,20 +333,23 @@ class Solution { ... };
 
 ## 🎯 Pattern Quick Reference
 
-| Pattern | Core Trick | Problems |
-|---|---|---|
-| Two Pointers | Two indices moving toward each other or at different speeds | 3Sum, Container With Most Water, Valid Palindrome |
-| Sliding Window (Fixed) | Reuse previous sum; add new, remove old element | Max Vowels, Max Average Subarray |
-| Sliding Window (Variable) | Shrink when constraint violated | Longest Substring No Repeat, Fruit Into Baskets |
-| Binary Search | Eliminate half search space per step | All BS problems, Koko, Peak Index |
-| HashMap | O(1) lookup for complement/frequency | Two Sum, Group Anagrams, Subarray Sum |
-| Monotonic Stack | Stack kept in increasing/decreasing order | Daily Temperatures, Next Greater Element |
-| Fast & Slow Pointers | Two speeds to find middle or detect cycle | Linked List Cycle, Middle of List |
-| Prefix Sum | `prefix[j] - prefix[i]` gives range sum | Subarray Sum Equals K, Running Sum |
-| Heap (Top-K) | Keep k best elements using opposite heap | Kth Largest, K Closest Points |
-| Backtracking | Explore + undo choices recursively | Subsets, Permutations |
-| Tree DFS | Postorder/preorder recursion carrying state | Diameter, LCA, Count Good Nodes |
-| Tree BFS | Level-by-level queue traversal | Level Order, Right Side View |
+| Pattern | Complexity | Core Trick | Example Problems |
+|---|---|---|---|
+| Two Pointers | O(n) | Two indices moving toward each other or at different speeds | 3Sum, Container With Most Water |
+| Sliding Window (Fixed) | O(n) | Add new element, remove old, reuse prior sum | Max Vowels, Max Average Subarray |
+| Sliding Window (Variable) | O(n) | Shrink from left when constraint violated | Longest Substring, Fruit Into Baskets |
+| Binary Search | O(log n) | Eliminate half search space per step | Koko, Peak Index, Rotated Array |
+| HashMap / HashSet | O(n) | O(1) lookup for complement or frequency | Two Sum, Group Anagrams, Subarray Sum |
+| Frequency Array | O(n) | Fixed size-26 array for character counts | First Unique Char, Valid Anagram |
+| Monotonic Stack | O(n) | Stack kept in increasing/decreasing order | Daily Temperatures, Next Greater Element |
+| Fast & Slow Pointers | O(n) | Two speeds to find middle or detect cycle | Linked List Cycle, Middle of List |
+| Prefix Sum | O(n) | `prefix[j] - prefix[i]` gives range sum | Subarray Sum Equals K, Running Sum |
+| Heap (Top-K) | O(n log k) | Keep k best elements using opposite heap | Kth Largest, K Closest Points |
+| Backtracking | O(2ⁿ) / O(n!) | Explore + undo choices recursively | Subsets, Permutations |
+| Tree DFS | O(n) | Postorder/preorder recursion carrying state | Diameter, LCA, Count Good Nodes |
+| Tree BFS | O(n) | Level-by-level queue traversal | Level Order, Right Side View |
+| Matrix Transform | O(n²) | Transpose + Reverse = clockwise rotation | Rotate Image |
+| Digit Manipulation | O(log n) | `% 10` extracts, `/ 10` removes last digit | Reverse Integer, atoi |
 
 ---
 
@@ -341,7 +368,7 @@ g++ -std=c++17 -o solution 1_Two_Sum.cpp
 
 ## 🤝 Contributing
 
-Feel free to open an issue or pull request if you spot a bug, have a cleaner approach, or want to suggest a new problem to add.
+Feel free to open an issue or pull request if you spot a bug, have a cleaner approach, or want to suggest a problem to add.
 
 ---
 
