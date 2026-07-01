@@ -1,6 +1,6 @@
 # 🧠 LeetCode Solutions in C++
 
-A curated collection of **100 LeetCode solutions** written in C++ with detailed comments explaining the intuition, approach, time/space complexity, and pattern used for every problem.
+A curated collection of **160 LeetCode solutions** written in C++ with detailed comments explaining the intuition, approach, time/space complexity, and pattern used for every problem.
 
 > Problems are organized by **pattern / data structure** so you can study by topic and recognize problem-solving patterns during interviews.
 
@@ -29,20 +29,20 @@ A curated collection of **100 LeetCode solutions** written in C++ with detailed 
 
 | Category | Problems Solved |
 |---|---|
-| Two Pointers | 9 |
-| Sliding Window | 7 |
-| Binary Search | 9 |
-| Hashing | 11 |
-| Math & Simulation | 8 |
-| Arrays | 10 |
+| Two Pointers | 14 |
+| Sliding Window | 9 |
+| Binary Search | 14 |
+| Hashing | 17 |
+| Math & Simulation | 14 |
+| Arrays | 23 |
 | Matrix | 2 |
-| Linked List | 11 |
-| Stack | 8 |
-| Trees (BFS / DFS) | 14 |
-| Heap / Priority Queue | 6 |
+| Linked List | 13 |
+| Stack | 15 |
+| Trees (BFS / DFS) | 15 |
+| Heap / Priority Queue | 7 |
 | Backtracking | 4 |
-| String Manipulation | 3 |
-| **Total** | **100** 🎉 |
+| String Manipulation | 11 |
+| **Total** | **160** 🎉 |
 
 ---
 
@@ -63,6 +63,11 @@ The two-pointer technique uses two indices that move through the data structure 
 | 167 | [Two Sum II – Sorted Array](./167_Two_Sum_II_Input_Array_Is_Sorted.cpp) | 🟡 Medium | Sorted array → converging pointers |
 | 283 | [Move Zeroes](./283_Move_Zeroes.cpp) | 🟢 Easy | Partition: swap non-zeros forward |
 | 392 | [Is Subsequence](./392_Is_Subsequence.cpp) | 🟢 Easy | Greedy match through target string |
+| 18 | [4Sum](./18_4Sum.cpp) | 🟡 Medium | Sort + two pointers with duplicate skipping |
+| 42 | [Trapping Rain Water](./42_Trapping_Rain_Water.cpp) | 🔴 Hard | Two pointers with left/right max tracking |
+| 88 | [Merge Sorted Array](./88_Merge_Sorted_Array.cpp) | 🟢 Easy | Fill from the end with three pointers |
+| 977 | [Squares of a Sorted Array](./977_Squares_of_a_Sorted_Array.cpp) | 🟢 Easy | Compare squares from both ends |
+| 2540 | [Minimum Common Value](./2540. Minimum Common Value.cpp) | 🟢 Easy | Advance the smaller pointer until values match |
 
 ---
 
@@ -81,6 +86,8 @@ A window that expands/contracts over an array or string. Fixed-size windows reus
 | 904 | [Fruit Into Baskets](./904_Fruit_Into_Baskets.cpp) | 🟡 Medium | At-most-2-distinct → variable window + HashMap |
 | 1004 | [Max Consecutive Ones III](./1004_Max_Consecutive_Ones_III.cpp) | 🟡 Medium | Count zeros in window; shrink when zeros > k |
 | 1456 | [Max Vowels in Substring of Length K](./1456_Maximum_Number_of_Vowels_in_a_Substring_of_Given_Length.cpp) | 🟡 Medium | Fixed window; add incoming vowel, remove outgoing |
+| 209 | [Minimum Size Subarray Sum](./209_Minimum_Size_Subarray_Sum.cpp) | 🟡 Medium | Shrink window while the sum stays large enough |
+| 485 | [Max Consecutive Ones](./485_Max_Consecutive_Ones.cpp) | 🟢 Easy | Count streaks of 1s with a running window |
 
 ---
 
@@ -101,6 +108,11 @@ Eliminates half the search space each iteration. Works on sorted arrays and on a
 | 704 | [Binary Search](./704_Binary_Search.cpp) | 🟢 Easy | Classic binary search template |
 | 852 | [Peak Index in Mountain Array](./852_Peak_Index_in_a_Mountain_Array.cpp) | 🟡 Medium | Compare `mid` with `mid+1` to find slope direction |
 | 875 | [Koko Eating Bananas](./875_Koko_Eating_Bananas.cpp) | 🟡 Medium | Binary search on answer space `[1, max(piles)]` |
+| 34 | [Find First and Last Position of Element in Sorted Array](./34_Find_First_and_Last_Position_of_Element_in_Sorted_Array.cpp) | 🟡 Medium | Binary search twice to find the left and right bounds |
+| 69 | [Sqrt(x)](./69_Sqrt_x.cpp) | 🟢 Easy | Binary search the integer square root |
+| 162 | [Find Peak Element](./162_Find_Peak_Element.cpp) | 🟡 Medium | Compare `mid` with neighbors to move toward a peak |
+| 228 | [Summary Ranges](./228. Summary Ranges.cpp) | 🟢 Easy | Scan consecutive runs and emit intervals |
+| 540 | [Single Element in a Sorted Array](./540_Single_Element_in_a_Sorted_Array.cpp) | 🟡 Medium | Pair alignment + binary search on the odd side |
 
 ---
 
@@ -122,6 +134,13 @@ Hash maps and hash sets give O(1) average lookups — ideal for counting frequen
 | 1207 | [Unique Number of Occurrences](./1207_Unique_Number_of_Occurrences.cpp) | 🟢 Easy | Build freq map; check all frequencies unique via HashSet |
 | 2149 | [Rearrange Array Elements by Sign](./2149_Rearrange_Array_Elements_by_Sign.cpp) | 🟡 Medium | Separate even/odd index pointers for positives/negatives |
 | 3866 | [First Unique Even Element](./3866_First_Unique_Even_Element.cpp) | 🟢 Easy | Count only evens in map; scan original order for freq == 1 |
+| 205 | [Isomorphic Strings](./205_Isomorphic_Strings.cpp) | 🟢 Easy | Track a one-to-one character mapping |
+| 219 | [Contains Duplicate II](./219_Contains_Duplicate_II.cpp) | 🟢 Easy | HashMap remembers last index seen for each value |
+| 290 | [Word Pattern](./290_Word_Pattern.cpp) | 🟢 Easy | Two-way map between pattern chars and words |
+| 349 | [Intersection of Two Arrays](./349. Intersection of Two Arrays.cpp) | 🟢 Easy | Insert into sets, then keep shared values once |
+| 350 | [Intersection of Two Arrays II](./350. Intersection of Two Arrays II.cpp) | 🟢 Easy | Count frequencies and consume matches |
+| 383 | [Ransom Note](./383. Ransom Note.cpp) | 🟢 Easy | Frequency count the magazine and subtract letters |
+| 389 | [Find the Difference](./389. Find the Difference.cpp) | 🟢 Easy | Frequency or XOR to isolate the extra character |
 
 ---
 
@@ -141,6 +160,12 @@ Problems solved through arithmetic reasoning, digit manipulation, or simulating 
 | 357 | [Count Numbers With Unique Digits](./357_Count_Numbers_With_Unique_Digits.cpp) | 🟡 Medium | Combinatorics — first digit 9 choices, next 9, 8, 7… |
 | 1281 | [Subtract Product and Sum of Digits](./1281_Subtract_the_Product_and_Sum_of_Digits_of_an_Integer.cpp) | 🟢 Easy | `% 10` extracts digit; `/ 10` removes it |
 | 1480 | [Running Sum of 1D Array](./1480_Running_Sum_of_1d_Array.cpp) | 🟢 Easy | In-place prefix sum: `nums[i] += nums[i-1]` |
+| 136 | [Single Number](./136_Single_Number.cpp) | 🟢 Easy | XOR cancels paired values |
+| 191 | [Number of 1 Bits](./191_Number_of_1_Bits.cpp) | 🟢 Easy | Shift or clear the lowest set bit until zero |
+| 202 | [Happy Number](./202_Happy_Number.cpp) | 🟢 Easy | Repeated digit-square sums with cycle detection |
+| 2235 | [Add Two Integers](./2235. Add Two Integers.cpp) | 🟢 Easy | Direct arithmetic addition |
+| 258 | [Add Digits](./258. Add Digits.cpp) | 🟢 Easy | Repeated digit sum or digital-root math |
+| 338 | [Counting Bits](./338_Counting_Bits.cpp) | 🟢 Easy | DP / bit parity for every integer from 0 to n |
 
 ---
 
@@ -160,6 +185,19 @@ General array manipulation — sorting tricks, in-place reordering, prefix/suffi
 | 287 | [Find the Duplicate Number](./287_Find_the_Duplicate_Number.cpp) | 🟡 Medium | Floyd's cycle detection on index-value linked list |
 | 448 | [Find All Numbers Disappeared in Array](./448_Find_All_Numbers_Disappeared_in_an_Array.cpp) | 🟢 Easy | Mark visited indices negative; positive index = missing |
 | 922 | [Sort Array By Parity II](./922_Sort_Array_By_Parity_II.cpp) | 🟢 Easy | Two placement pointers for even and odd indices |
+| 41 | [First Missing Positive](./41. First Missing Positive.cpp) | 🔴 Hard | Place each number at its index if possible |
+| 54 | [Spiral Matrix](./54_Spiral_Matrix.cpp) | 🟡 Medium | Traverse layer by layer while shrinking boundaries |
+| 75 | [Sort Colors](./75. Sort Colors.cpp) | 🟡 Medium | Dutch national flag with low/mid/high pointers |
+| 80 | [Remove Duplicates from Sorted Array II](./80_Remove_Duplicates_from_Sorted_Array_II.cpp) | 🟡 Medium | Keep at most two copies with a write pointer |
+| 1299 | [Replace Elements with Greatest Element on Right Side](./1299_Replace_Elements_with_Greatest_Element_on_Right_Side.cpp) | 🟢 Easy | Scan from right while tracking the max so far |
+| 1431 | [Kids With the Greatest Number of Candies](./1431_Kids_With_the_Greatest_Number_of_Candies.cpp) | 🟢 Easy | Compare each kid against the current max |
+| 1929 | [Concatenation of Array](./1929_Concatenation_of_Array.cpp) | 🟢 Easy | Duplicate the array into a 2n result |
+| 2150 | [Find All Lonely Numbers in the Array](./2150. Find All Lonely Numbers in the Array.cpp) | 🟢 Easy | Count frequencies and keep isolated values |
+| 268 | [Missing Number](./268_Missing_Number.cpp) | 🟢 Easy | Sum or XOR against the expected range total |
+| 303 | [Range Sum Query - Immutable](./303. Range Sum Query - Immutable.cpp) | 🟢 Easy | Prefix sums answer range queries in O(1) |
+| 347 | [Top K Frequent Elements](./347. Top K Frequent Elements.cpp) | 🟡 Medium | Bucket sort or heap on element frequencies |
+| 724 | [Find Pivot Index](./724_Find_Pivot_Index.cpp) | 🟢 Easy | Prefix/suffix balance around each index |
+| 905 | [Sort Array By Parity](./905. Sort Array By Parity.cpp) | 🟢 Easy | Partition evens before odds |
 
 ---
 
@@ -191,8 +229,10 @@ Pointer manipulation problems. Key techniques: dummy nodes, fast/slow pointers, 
 | 142 | [Linked List Cycle II](./142_Linked_List_Cycle_II.cpp) | 🟡 Medium | After detection, reset slow to head; both advance 1 step |
 | 143 | [Reorder List](./143_Reorder_List.cpp) | 🟡 Medium | Find middle → reverse second half → merge alternately |
 | 206 | [Reverse Linked List](./206_Reverse_Linked_List.cpp) | 🟢 Easy | Three-pointer iterative reversal |
-| 287 | [Find the Duplicate Number](./287_Find_the_Duplicate_Number.cpp) | 🟡 Medium | Array as linked list; Floyd's cycle gives duplicate |
 | 876 | [Middle of the Linked List](./876_Middle_of_the_Linked_List.cpp) | 🟢 Easy | Fast moves 2x; when fast ends, slow is at middle |
+| 160 | [Intersection of Two Linked Lists](./160. Intersection of Two Linked Lists.cpp) | 🟢 Easy | Align pointer lengths or switch heads on null |
+| 234 | [Palindrome Linked List](./234. Palindrome Linked List.cpp) | 🟢 Easy | Find middle, reverse second half, compare halves |
+| 430 | [Flatten a Multilevel Doubly Linked List](./430_Flatten_a_Multilevel_Doubly_Linked_List.cpp) | 🟡 Medium | DFS flatten child lists and relink pointers |
 
 ---
 
@@ -212,6 +252,13 @@ LIFO order makes stacks perfect for matching pairs, "undo" operations, next grea
 | 844 | [Backspace String Compare](./844_Backspace_String_Compare.cpp) | 🟢 Easy | Simulate typing with a stack; '#' pops last character |
 | 1047 | [Remove All Adjacent Duplicates In String](./1047_Remove_All_Adjacent_Duplicates_In_String.cpp) | 🟢 Easy | Push char or pop if it matches stack top |
 | 2390 | [Removing Stars From a String](./2390_Removing_Stars_From_a_String.cpp) | 🟡 Medium | '*' pops most recent character from stack |
+| 84 | [Largest Rectangle in Histogram](./84. Largest Rectangle in Histogram.cpp) | 🔴 Hard | Monotonic increasing stack of bar indices |
+| 225 | [Implement Stack using Queues](./225. Implement Stack using Queues.cpp) | 🟢 Easy | Use two queues or one queue rotation |
+| 232 | [Implement Queue using Stacks](./232. Implement Queue using Stacks.cpp) | 🟢 Easy | Use two stacks for push and pop transfer |
+| 316 | [Remove Duplicate Letters](./316. Remove Duplicate Letters.cpp) | 🟡 Medium | Monotonic stack keeps the smallest lexicographic result |
+| 402 | [Remove K Digits](./402_Remove_K_Digits.cpp) | 🟡 Medium | Monotonic stack removes larger digits greedily |
+| 682 | [Baseball Game](./682. Baseball Game.cpp) | 🟢 Easy | Stack simulates score history and operators |
+| 735 | [Asteroid Collision](./735. Asteroid Collision.cpp) | 🟡 Medium | Stack resolves right-moving vs left-moving asteroids |
 
 ---
 
@@ -232,6 +279,12 @@ Tree problems divide into **DFS** (recursive depth-first, natural for height/pat
 | 543 | [Diameter of Binary Tree](./543_Diameter_of_Binary_Tree.cpp) | 🟢 Easy | At each node: `leftHeight + rightHeight`; track global max |
 | 572 | [Subtree of Another Tree](./572_Subtree_of_Another_Tree.cpp) | 🟢 Easy | Traverse root; at matching values run full equality check |
 | 1448 | [Count Good Nodes in Binary Tree](./1448_Count_Good_Nodes_in_Binary_Tree.cpp) | 🟡 Medium | DFS carrying `maxSoFar` on path; node is good if ≥ max |
+| 94 | [Binary Tree Inorder Traversal](./94_Binary_Tree_Inorder_Traversal.cpp) | 🟢 Easy | DFS left → node → right |
+| 103 | [Binary Tree Zigzag Level Order Traversal](./103. Binary Tree Zigzag Level Order Traversal.cpp) | 🟡 Medium | Level order traversal with alternating direction |
+| 111 | [Minimum Depth of Binary Tree](./111. Minimum Depth of Binary Tree.cpp) | 🟢 Easy | DFS / BFS to first leaf |
+| 144 | [Binary Tree Preorder Traversal](./144_Binary_Tree_Preorder_Traversal.cpp) | 🟢 Easy | DFS node → left → right |
+| 145 | [Binary Tree Postorder Traversal](./145_Binary_Tree_Postorder_Traversal.cpp) | 🟢 Easy | DFS left → right → node |
+| 226 | [Invert Binary Tree](./226. Invert Binary Tree.cpp) | 🟢 Easy | Swap left and right children recursively |
 
 ### BFS Problems
 
@@ -247,6 +300,14 @@ Tree problems divide into **DFS** (recursive depth-first, natural for height/pat
 | 58 | [Length of Last Word](./58_Length_of_Last_Word.cpp) | 🟢 Easy | Reverse scan: skip trailing spaces, count word characters |
 | 151 | [Reverse Words in a String](./151_Reverse_Words_in_a_String.cpp) | 🟡 Medium | Reverse whole string, then reverse each word individually |
 | 1910 | [Remove All Occurrences of a Substring](./1910_Remove_All_Occurrences_of_a_Substring.cpp) | 🟡 Medium | Repeatedly `find + erase` until no occurrence remains |
+| 28 | [Find the Index of the First Occurrence in a String](./28. Find the Index of the First Occurrence in a String.cpp) | 🟢 Easy | Use string search or a simple scan |
+| 71 | [Simplify Path](./71. Simplify Path.cpp) | 🟡 Medium | Stack-like processing of path segments |
+| 344 | [Reverse String](./344_Reverse_String.cpp) | 🟢 Easy | Two pointers swap characters in place |
+| 415 | [Add Strings](./415. Add Strings.cpp) | 🟢 Easy | Digit-by-digit addition from the end |
+| 443 | [String Compression](./443_String_Compression.cpp) | 🟢 Easy | Run-length encode in place with a write pointer |
+| 520 | [Detect Capital](./520_Detect_Capital.cpp) | 🟢 Easy | Check capitalization patterns directly |
+| 680 | [Valid Palindrome II](./680. Valid Palindrome II.cpp) | 🟢 Easy | Allow one mismatch and test both skips |
+| 1662 | [Check If Two String Arrays are Equivalent](./1662_Check_If_Two_String_Arrays_are_Equivalent.cpp) | 🟢 Easy | Compare joined strings lazily with pointers |
 
 ---
 
@@ -264,6 +325,7 @@ A max-heap or min-heap gives O(log n) insert/extract and O(1) peek — ideal for
 | 703 | [Kth Largest Element in a Stream](./703_Kth_Largest_Element_in_a_Stream.cpp) | 🟢 Easy | Min-heap of size k maintained on every `add()` call |
 | 973 | [K Closest Points to Origin](./973_K_Closest_Points_to_Origin.cpp) | 🟡 Medium | Max-heap of size k by squared distance |
 | 1046 | [Last Stone Weight](./1046_Last_Stone_Weight.cpp) | 🟢 Easy | Max-heap; extract two heaviest, push difference if unequal |
+| 692 | [Top K Frequent Words](./692. Top K Frequent Words.cpp) | 🟡 Medium | Heap or sorting on word frequencies and lexicographic order |
 
 ---
 
